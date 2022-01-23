@@ -1,5 +1,5 @@
 const initialState= {
-    token: 'djfhu889gdhgdf'
+    token: null
 }
 
 
