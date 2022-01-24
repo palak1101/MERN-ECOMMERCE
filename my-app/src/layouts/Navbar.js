@@ -24,9 +24,11 @@ import {
 } from '@chakra-ui/icons';
 
 import { Link as lee } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
+    const { token } = useSelector(state => state.auth)
 
     return (
         <Box>
@@ -52,7 +54,7 @@ export default function Navbar() {
                         variant={'ghost'}
                     />
                 </Flex>
-                
+
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
                     <Link to='/' as={lee} ><Image hr borderRadius="full" boxSize="50px" src='https://www.svgrepo.com/show/174895/orkut-logo.svg' /></Link>
 
@@ -62,7 +64,7 @@ export default function Navbar() {
 
                 </Flex>
 
-                <Stack
+                {token ? null : <Stack
                     flex={{ base: 1, md: 0 }}
                     justify={'flex-end'}
                     direction={'row'}
@@ -73,7 +75,7 @@ export default function Navbar() {
                         fontWeight={400}
                         variant={'link'}
                         to={'/login'}>
-                        Sign In
+                        Login
                     </Button>
                     <Button
                         as={lee}
@@ -89,6 +91,7 @@ export default function Navbar() {
                         Sign Up
                     </Button>
                 </Stack>
+                }
             </Flex>
 
             <Collapse in={isOpen} animateOpacity>
