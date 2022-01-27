@@ -3,7 +3,7 @@ import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Products from './components/Products';
-import Product from './components/Product';
+import Product from './components/Product/Product';
 import Order from './components/Order';
 import MyOrders from './components/MyOrders';
 import AdminPage from './components/AdminPage';
@@ -23,6 +23,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/products' element={<Products />} />
+        <Route path='/product/:productId' element={<Product />} />
         <Route path='/admin' element={<AdminPage />} />
       </Routes>
       <Footer />

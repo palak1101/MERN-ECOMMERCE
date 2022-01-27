@@ -189,7 +189,7 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
     {
         label: 'Shop',
-        to: '/shop'
+        to: '/products'
     },
     {
         label: 'Shop for iPhone',
