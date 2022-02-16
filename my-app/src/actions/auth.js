@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 
-
+//Login
 export const loginUser = (email, password) => async (dispatch) => {
 
     try {
@@ -40,7 +40,7 @@ export const loginUser = (email, password) => async (dispatch) => {
 
 
 
-
+//Signup
 export const signupUser = (firstName, lastName, email, password) => async (dispatch) => {
 
     try {
