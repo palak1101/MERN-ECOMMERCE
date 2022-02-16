@@ -17,7 +17,9 @@ export const loginUser = (email, password) => async (dispatch) => {
 
         if(token){
             toast.success('Login Success')
-
+            // save token to localStorage
+            localStorage.setItem('token', token)
+            
             dispatch({
                 type: "LOGIN_SUCCESS",
                 payload: { token }

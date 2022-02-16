@@ -38,7 +38,7 @@ export default function Signup() {
     
 
     //check to redirect user to login page once it has signed up
-    const navigate = useNavigate
+    const navigate = useNavigate()
     
     const { signup } = useSelector(state=>state.auth)
     //console.log(signup)
@@ -113,7 +113,7 @@ export default function Signup() {
                         </FormControl>
                         <Stack spacing={10} pt={2}>
                             <Button
-                            onClick={() => handleSignup}
+                            onClick={handleSignup}
                                 loadingText="Submitting"
                                 size="lg"
                                 bg={'blue.400'}
