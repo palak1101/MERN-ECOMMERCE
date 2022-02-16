@@ -15,10 +15,12 @@ import {
     useColorModeValue,
     Link,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import {Link as routerLink} from 'react-router-dom';
+import {Link as routerLink, useNavigate} from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { signupUser } from '../actions/auth';
 
 export default function Signup() {
     const [showPassword, setShowPassword] = useState(false);
@@ -27,21 +29,33 @@ export default function Signup() {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
 
+    const dispatch = useDispatch()
+
 
     const handleSignup = () => {
-        console.log(
-            email, password, firstName, lastName
-        )
-
-        const users = JSON.parse(localStorage.getItem('users')) ?? []
-        console.log(users)
-        toast.success("SignUp Success")
-
-        localStorage.setItem('users', JSON.stringify([...users,{
-            email, password, firstName, lastName
-        }]))
-        
+        dispatch(signupUser(firstName, lastName, email, password))
     }
+    
+
+    //check to redirect user to login page once it has signed up
+    const navigate = useNavigate
+    
+    const { signup } = useSelector(state=>state.auth)
+    //console.log(signup)
+    if (signup && signup === true) {
+        navigate('/login')
+    }
+
+
+
+    //Refresh to signup new user
+    useEffect(() => {
+        return () => dispatch({
+            type: "REFRESH_SIGNUP"
+        })
+    }, [])
+
+
 
     return (
         <Flex
@@ -99,7 +113,7 @@ export default function Signup() {
                         </FormControl>
                         <Stack spacing={10} pt={2}>
                             <Button
-                            onClick={handleSignup}
+                            onClick={() => handleSignup}
                                 loadingText="Submitting"
                                 size="lg"
                                 bg={'blue.400'}

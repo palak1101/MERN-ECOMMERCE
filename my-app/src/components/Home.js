@@ -60,7 +60,7 @@ export default function Home() {
                     alt={'Login Image'}
                     objectFit={'cover'}
                     src={
-                        'https://images.unsplash.com/photo-1593259037198-c720f4420d7f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHBob25lJTIwYWNjZXNzb3JpZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
+                        'https://images.unsplash.com/photo-1624823183493-ed5832f48f18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80'
                     }
                 />
             </Flex>

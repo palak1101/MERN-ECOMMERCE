@@ -94,6 +94,18 @@ const productsReducer = (state = initialState, action) => {
     const { type, payload } = action
 
     switch (type) {
+        case 'DELETE_PRODUCT':
+            const { productId } = payload
+            return {
+                products: state.products.filter(prod => prod.id !== productId)
+            }
+
+        case 'ADD_PRODUCT':
+            const { product } = payload
+            return {
+                products: [...state.products, product]
+            }
+            
         default:
             return state
     }

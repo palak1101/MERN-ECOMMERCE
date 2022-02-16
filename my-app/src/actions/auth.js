@@ -1,26 +1,72 @@
 import jwt from 'jsonwebtoken';
-import {toast} from 'react-hot-toast';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
-export const loginUser = (email, password) => {
-    //Verify EMAIL and PASSWORD
-    
-    //Create and Sign a jwt
-    const users =JSON.parse(localStorage.getItem('users'))
-    const user = users.find(u => u.email === email)
 
-    if(user.email === email && user.password === password){
-        const token = jwt.sign({ email: user.email }, 'SECRET')
-        toast.success("Login Success")
 
-        return {
-            type:"LOGIN_SUCCESS",
-            payload:{token}
+export const loginUser = (email, password) => async (dispatch) => {
+
+    try {
+        const base_Url = 'http://localhost:8080'
+        
+        const res = await axios.post(`${base_Url}/api/v1/auth/login`, {
+            email, password
+        })
+
+        const {token, message} = res.data
+
+        if(token){
+            toast.success('Login Success')
+
+            dispatch({
+                type: "LOGIN_SUCCESS",
+                payload: { token }
+            })
+        }else{
+            toast.error(message)
+
+            dispatch({
+                type: "LOGIN_FAILED",
+                payload: { token: null }
+            })
         }
-    }else{
-        return {
-            type:"LOGIN_FAILED",
-            payload:{token: null}
-        }
+
+    } catch (error) {
+        console.log(error.message)
+        toast.error(error.message)
     }
-}
+    
+};
 
+
+
+
+export const signupUser = (firstName, lastName, email, password) => async (dispatch) => {
+
+    try {
+        const base_Url = 'http://localhost:8080'
+
+        const res = await axios.post(`${base_Url}/api/v1/auth/signup`, {
+            firstName, lastName, email, password
+        })
+        // console.log(res.data)
+
+        const { user } = res.data
+        if (user) {
+            toast.success("Signup Success")
+            dispatch({
+                type: "SIGNUP_SUCCESS",
+                payload: { signup: true }
+            })
+        } else {
+            toast.error("Signup Failed")
+            dispatch({
+                type: "SIGNUP_FAILED",
+                payload: { signup: false }
+            })
+        }
+    } catch (error) {
+        console.log(error.message)
+        toast.error(error.message)
+    }
+};
