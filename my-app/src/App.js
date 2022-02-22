@@ -11,9 +11,13 @@ import AdminPage from './components/admin/AdminPage';
 import Navbar from './layouts/Navbar';
 import Footer from './layouts/Footer';
 import PrivateRoute from './routing/PrivateRoute';
+import Cart from './components/cart/Cart';
+import { getProducts } from './actions/productAction';
+import { loadCart } from './actions/cart';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {Toaster} from 'react-hot-toast';
+
 
 const App = () => {
 
@@ -35,6 +39,13 @@ const App = () => {
   }, [])
 
 
+  useEffect(() => {
+    dispatch(getProducts())
+    dispatch(loadCart())
+  }, [])
+
+
+
   return (
     <div className="App">
       <div><Toaster /></div>
@@ -46,6 +57,7 @@ const App = () => {
         <Route path='/products' element={<Products />} />
         <Route path='/products/:productId' element={<Product />} />
         <Route path='/adminpage' element={<AdminPage />} />
+        <Route path='/cart' element={<Cart />} />
       </Routes>
       <Footer />
     </div>

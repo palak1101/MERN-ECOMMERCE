@@ -29,15 +29,15 @@ export default function Home() {
                                 bg: 'blue.400',
                                 zIndex: -1,
                             }}>
-                            Shop For
+                            Accessories
                         </Text>
                         <br />{' '}
                         <Text color={'blue.400'} as={'span'}>
-                            Accessories you'll ❤️
+                            That you'll love ❤️
                         </Text>{' '}
                     </Heading>
                     <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem omnis at hic reprehenderit quis consequatur porro perferendis, fugiat officiis dolorum! Odit hic asperiores maxime doloribus eligendi eius in, autem molestiae?
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et explicabo provident tempore rerum ad, voluptas sapiente deleniti culpa.
                     </Text>
                     <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
                         <Button

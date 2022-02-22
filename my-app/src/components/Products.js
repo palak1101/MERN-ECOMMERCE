@@ -9,11 +9,26 @@ import ProductCard from './Product/ProductCard';
 import Filters from './FilterDrawer';
 import Values from './Values';
 import { Link as lee } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function Products() {
 
-    const { products } = useSelector(state => state.products)
+    //const { products } = useSelector(state => state.products)
+
+    const [products, setproducts] = useState([])
+    const getProducts = async () => {
+        const res = await axios.get('http://localhost:8080/api/v1/product/all')
+        // console.log(res.data)
+        const { products } = res.data
+        // console.log(products)
+        setproducts(products)
+    }
+
+    useEffect(() => {
+        getProducts()
+    }, [])
 
     
     return (
@@ -25,7 +40,7 @@ export default function Products() {
                 </Flex>
             </Box>
             <Flex justifyContent={'center'} flexWrap={'wrap'} >
-                {products.map(product => <Link to={`/products/${product.id}`} as={lee} ><ProductCard data={product} /></Link>)}
+                {products.map(product => <Link to={`/products/${product._id}`} as={lee} ><ProductCard data={product} /></Link>)}
             </Flex>
         </Box>
     );

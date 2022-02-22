@@ -22,6 +22,7 @@ const AddProduct = () => {
     const [color, setcolor] = useState('')
     const [listingPrice, setlistingPrice] = useState('')
     const [actualPrice, setactualPrice] = useState('')
+    const [compatibleWith, setcompatibleWith] = useState('')
     const [stock, setstock] = useState(0)
     const [categories, setCategories] = useState([])
     const dispatch = useDispatch()
@@ -41,12 +42,12 @@ const AddProduct = () => {
 
 
     const handleAddProduct = () => {
-        // dispatch(addProduct({
-        //     name, imageUrl, description, category, color, listingPrice, actualPrice, stock
-        // }))
+        dispatch(addProduct(
+            name, actualPrice, listingPrice, description, color, compatibleWith, category, imageUrl, stock
+        ))
 
         console.log({
-            name, imageUrl, description, category, color, listingPrice, actualPrice, stock
+            name, actualPrice, listingPrice, description, color, compatibleWith, category, imageUrl, stock
         })
     }
 
@@ -63,6 +64,9 @@ const AddProduct = () => {
 
                 <FormLabel>Product Description</FormLabel>
                 <Input onChange={(e) => { setdescription(e.target.value) }} type="text" />
+
+                <FormLabel>Compatible With</FormLabel>
+                <Input onChange={(e) => { setcompatibleWith(e.target.value) }} type='text' />
 
                 <FormLabel>Category</FormLabel>
                 <Select onChange={(e) => {

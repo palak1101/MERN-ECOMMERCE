@@ -11,8 +11,8 @@ import {
 
 
 const ProductCard = ({ data }) => {
-    const { imageUrl, productName, actualPrice, listingPrice, color } = data
-    console.log(data)
+    const { imageURL, name, price, listPrice, color } = data
+    //console.log(data)
     return (
         <Box
             role={'group'}
@@ -38,7 +38,7 @@ const ProductCard = ({ data }) => {
                     pos: 'absolute',
                     top: 5,
                     left: 0,
-                    backgroundImage: `url(${imageUrl})`,
+                    backgroundImage: `url(${imageURL})`,
                     filter: 'blur(15px)',
                     zIndex: -1,
                 }}
@@ -52,7 +52,7 @@ const ProductCard = ({ data }) => {
                     height={230}
                     width={282}
                     objectFit={'cover'}
-                    src={imageUrl}
+                    src={imageURL}
                 />
             </Box>
             <Stack pt={10} align={'center'}>
@@ -61,15 +61,15 @@ const ProductCard = ({ data }) => {
                 </Text>
 
                 <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                    {`${productName}, ${color}`}
+                    {`${name}, ${color}`}
                 </Heading>
-                
+
                 <Stack direction={'row'} align={'center'}>
                     <Text color={'gray.700'} fontWeight={800} fontSize={'xl'}>
-                        {actualPrice}
+                        ${listPrice}
                     </Text>
                     <Text textDecoration={'line-through'} color={'gray.600'}>
-                        {listingPrice}
+                        ${price}
                     </Text>
                 </Stack>
             </Stack>
