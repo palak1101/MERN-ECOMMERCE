@@ -52,7 +52,7 @@ export const CartOrderSummary = ({ total }) => {
         }
 
         // creating a new order
-        const result = await axios.post("http://localhost:8080/api/v1/order/createOrder", {
+        const result = await axios.post("https://palak-ecommerce-api.herokuapp.com/api/v1/order/createOrder", {
             amount: '50000'
         });
 
@@ -80,7 +80,7 @@ export const CartOrderSummary = ({ total }) => {
                     razorpaySignature: response.razorpay_signature,
                 };
 
-                const result = await axios.post("http://localhost:8080/api/v1/order/verify", data);
+                const result = await axios.post("https://palak-ecommerce-api.herokuapp.com/api/v1/order/verify", data);
 
                 alert(result.data.msg);
             },
