@@ -30,7 +30,7 @@ const AddProduct = () => {
 
     // function responsible to get categories from database
     const getCategories = async () => {
-        const res = await axios.get('http://localhost:8080/api/v1/category/all')
+        const res = await axios.get('https://palak-ecommerce-api.herokuapp.com/api/v1/category/all')
         const { categories, message } = res.data
         setCategories(categories)
     }

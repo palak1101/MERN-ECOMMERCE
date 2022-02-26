@@ -7,7 +7,7 @@ import { toast } from 'react-hot-toast';
 export const loginUser = (email, password) => async (dispatch) => {
 
     try {
-        const base_Url = 'http://localhost:8080'
+        const base_Url = 'https://palak-ecommerce-api.herokuapp.com'
         
         const res = await axios.post(`${base_Url}/api/v1/auth/login`, {
             email, password
@@ -46,7 +46,7 @@ export const loginUser = (email, password) => async (dispatch) => {
 export const signupUser = (firstName, lastName, email, password) => async (dispatch) => {
 
     try {
-        const base_Url = 'http://localhost:8080'
+        const base_Url = 'https://palak-ecommerce-api.herokuapp.com'
 
         const res = await axios.post(`${base_Url}/api/v1/auth/signup`, {
             firstName, lastName, email, password

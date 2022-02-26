@@ -4,7 +4,7 @@ import axios from 'axios'
 export const addProduct = (name, price, listPrice, description, color, compatibleWith, category, imageURL, stock) => async (dispatch) => {
 
     try {
-        const base_Url = 'http://localhost:8080'
+        const base_Url = 'https://palak-ecommerce-api.herokuapp.com'
         const res = await axios.post(`${base_Url}/api/v1/product/add`, {
             name, price, listPrice, description, color, compatibleWith, category, imageURL, stock
         })
@@ -33,7 +33,7 @@ export const addProduct = (name, price, listPrice, description, color, compatibl
 export const deleteProduct = (id) => async (dispatch) => {
 
     try {
-        const base_Url = 'http://localhost:8080'
+        const base_Url = 'https://palak-ecommerce-api.herokuapp.com'
         const res = await axios.delete(`${base_Url}/api/v1/product/delete/${id}`)
         console.log(res.data)
         const { product, message } = res.data
@@ -56,7 +56,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 };
 
 export const getProducts = (name, description) => async (dispatch) => {
-    const res = await axios.get('http://localhost:8080/api/v1/product/all')
+    const res = await axios.get('https://palak-ecommerce-api.herokuapp.com/api/v1/product/all')
     const { products } = res.data
     dispatch({
         type: "GET_PRODUCTS",

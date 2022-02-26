@@ -32,7 +32,7 @@ const ProductsTable = () => {
 
 
     const getProducts = async () => {
-        const res = await axios.get('http://localhost:8080/api/v1/product/all')
+        const res = await axios.get('https://palak-ecommerce-api.herokuapp.com/api/v1/product/all')
         // console.log(res.data)
         const { products, message } = res.data
         // console.log(products)
